@@ -1,0 +1,93 @@
+
+
+<!doctype html>
+
+<html>
+    <head>
+        <title>James Tan</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/ViewImage.css')}}" />
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+        
+    </head>
+
+    <body >
+    {% for entry in entries %}
+        <style type="text/css">
+
+            #radio{{loop.index}}:checked ~ .m{{loop.index}}{
+                margin-left: -{{100*(loop.index-1)}}%;
+            }
+            
+        </style>
+    {% endfor %}  
+
+    <div class="wrapper">
+            <div class='sidenav'>
+                <h2>James Tan</h2>
+                <ul >
+                    <li class="li" >
+                        <div class="box" id="NavBox" >
+                            <div class="icon" id="NavIcon">
+                                <ion-icon name="arrow-back-outline"></ion-icon>
+                            </div>
+                            <a href="/PastPred" class="nav-link" id='NavLink'>Go Back
+                            </a>
+                        </div>
+                    </li>                
+                </ul>                
+            </div>
+
+            <div class='block_content' style="justify-content: center;margin:auto;position:relative;">
+
+               
+                    <div class="slider" style="margin:auto;">
+                        <div class="slides">
+
+                            {% for entry in entries %}
+                            <input type="radio" name='radio-btn' id='{{"radio"+loop.index|string}}'>
+                            {% endfor %} 
+                        
+
+                            {% for entry in entries %}
+                            
+                            <div id="slidesContainer"class='{{"m"+loop.index|string}}' >  
+                                <div class="container" style="justify-content: center;;position: relative;width:fit-content">
+                                    <img id="Images"src=" {{ url_for('static', filename ='images/UserImages/'+entry.FileName)}}" >
+                                   
+                                </div>
+                                <div class="container" style="justify-content: center;position: relative;width:fit-content;text-align: center;">
+                                    <h3 id='h3Text'class='{{"c"+loop.index|string}}'> {{ 'Predicted Output: '+entry.predicted_value}}</h3> 
+                                   
+                                </div>
+                            </div> 
+                            {% endfor %}
+                        </div>
+                    </div>
+            
+                    <div class='container'style="height: fit-content;width:fit-content;">
+                        <div class="navigation-manual">
+                            {% for entry in entries %}
+                            <label for ='{{"radio"+loop.index|string}}'></label>
+                           
+                            {% endfor %}    
+                        </div>
+                    </div>
+
+                
+
+                </div>
+            </div>
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

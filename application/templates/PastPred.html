@@ -1,0 +1,95 @@
+<!-- Inherits from layout.html -->
+{% extends "layout.html" %}
+<!-- The block content replace the one encapsulated in  layout.html -->
+{% block content %}
+<div style="justify-content: center;margin:auto;position:relative;"">   
+        
+    {% if current_user.is_authenticated %}
+    <div id="Searchbar" 
+    style="background-color: #000000;color: white;height: fit-content;width: fit-content;
+            border-radius: 30px;
+    border-width: 4.5px;
+    border-color: black;
+    width:150px;
+    height:fit-content;
+    margin: auto;
+    margin-top:10px;
+
+    ">
+        <input style="border-radius: 30px;height: 30px;width: 1000px;
+        background-color: #ffffff;color: rgb(0, 0, 0);;
+            border-radius: 30px;
+    border-width: 3.5px;
+    border-color: rgb(255, 255, 255);
+    width:150px;
+    "type="text" id="SearchBar" onkeyup="myFunction()" placeholder="  Search Equation..">
+    </div>
+    <div class='container' id='HistoryTable'>
+        <div class="TableScroll">
+            <table class=" table table-striped">
+                <thead>
+                <tr>
+                    <th>View Images</th>
+                    <th >Equation</th>
+                    <th >Solved Value</th>
+                    <th >Timestamp</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody id="TableBody">
+                    {% for entry in entries %}
+                    <tr > 
+                        <td>
+                            <form name="ViewImages" action="/ViewImages" method="post"
+                                novalidate>
+                                <input type="hidden" name="id" value="{{entry.id}}">
+                                <input type="submit" id="ViewBtn"class="form-control btn-danger" 
+                                    value="View">
+                            </form>
+                        </td>
+                        <td id="EquationData" style="font-weight: 600;">{{ entry.equation }}</td>
+                        <td>{{ "%.2f"|format(entry.Solved_value)}}</td>
+                        <td>{{ entry.time_stamp.strftime("%d %b %y %H:%M") }}</td>
+                        <td>
+                            <form name="frmRemoveEntry" action="/removeEquation" method="post" 
+                                novalidate>
+                                <input type="hidden" name="id" value="{{entry.id}}">
+                                <input type="submit" id="RemoveBtn" class="form-control btn-danger" 
+                                    value="Remove">
+                            </form>
+                        </td>
+                    </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>  
+    </div>
+          {%endif%}
+</div>
+<script>
+    function myFunction(){
+        var input, filter, tablebody, tablerow, EquationValue, i, txtValue;
+        input = document.getElementById('SearchBar');
+        filter= input.value
+        console.log(filter)
+        tablebody=document.getElementById("TableBody")
+        
+        tablerow= $('#TableBody tr')
+     
+
+        for(i = 0;i<$('#TableBody tr').length;i++){
+            console.log(tablerow[i])
+            EquationValue=tablerow[i].children[1].innerText
+            console.log(i,EquationValue)
+            if(EquationValue.indexOf(filter)>-1){
+                tablerow[i].style.display ="";
+            }
+            else{
+                tablerow[i].style.display ="none";
+            }
+        }
+    }
+</script>
+{% endblock %}

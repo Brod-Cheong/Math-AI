@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Login Page</title>
+        
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/login_style.css')}}" />
+    </head>
+
+    <body>
+        <!-- <div class="container-fluid text-center top-container" id="ImageContainer">
+            <img src=
+             "{{ url_for('static',filename='images/House_image.jpg')}}">
+        </div> -->
+        <div class='container'>
+            <form  id='LoginForm'action="/Login" method="post" novalidate>
+                {{ Login_form.hidden_tag() }}
+                <div style='text-align:center'><h3 style="
+                text-align: center;
+                
+                
+                color: rgb(0, 145, 255);
+                font-weight: 600;
+                font-size: 4em;
+
+              
+              ">Math.AI</h3></div>
+                <h3> Log In</h3>
+                
+                <div class="form-group row">
+                    <div class="inputBox">
+                        <span>Username</span>
+                        <div class="box">
+                            <div class="icon">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                            </div>
+                            <!-- <input type="text"> -->
+                            {{ Login_form.LoginUsername(class_='form-control') }}
+                            
+                            {% if Login_form.LoginUsername.errors %}
+                                <ul class="errors">
+                                    {% for error in Login_form.LoginUsername.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <span>Password</span>
+                    <div class="box">
+                        <div class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                        {{ Login_form.LoginPassword(class_='form-control') }}
+                        {% if Login_form.LoginPassword.errors %}
+                                <ul class="errors"> 
+                                    {% for error in Login_form.LoginPassword.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <div class="box">
+                        {{ Login_form.submit(class_='btn') }}
+                    </div>
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true)%}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{category}}" style="background-color: red; color: white; text-align: center;">
+                                <h2>{{ message }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+        
+       
+        <!-- {% include "includes/footer.html" %} -->
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<style type="text/css">
+    .active  {
+    background-color: #ffffff;
+    }
+
+    
+</style>
+
+<div class='sidenav'>
+        <h1 style="
+            text-align: center;
+            display: flex;
+            margin:auto;
+            color: white;
+            font-weight: 500;
+          
+          ">Math.AI</h1>
+        <ul >
+            <li class="li" style="background-color: grey;">
+                <div class="box" id="NavBox" >
+                    <div class="icon" id="NavIcon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                    <a style='color:white' class='nav-link'>User: {{current_user.Username}}
+                    </a>
+                </div>
+            </li>
+
+            </li>
+            {% if request.endpoint=='home'%}
+                <li class="li active" >
+            {% else %}
+                <li class="li">
+            {%endif%}
+                <div class="box" id="NavBox" >
+                    <div class="icon" id="NavIcon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <a href="/home" class="nav-link" id='NavLink'>Home
+                    </a>
+                </div>
+            </li>
+            {% if request.endpoint=='MakePred'%}
+                <li class="li active" >
+            {% else %}
+                <li class="li">
+            {%endif%}
+                
+                <div class="box" id="NavBox" >
+                    <div class="icon" id="NavIcon">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                    </div>
+                    <a href="/MakePred" class="nav-link">Make Prediction
+                    </a>
+                </div>
+                
+                
+            </li>
+            {% if request.endpoint=='PastPred'%}
+                <li class="li active" >
+            {% else %}
+                <li class="li">
+            {%endif%}
+                
+                <div class="box" id="NavBox" >
+                    <div class="icon" id="NavIcon">
+                        <ion-icon name="clipboard-outline"></ion-icon>
+                    </div>
+                    <a href="/PastPred" class="nav-link">Past Prediction
+                    </a>
+                </div>
+            </li>
+
+            <li class="li">
+                <div class="box" id="NavBox" >
+                    <div class="icon" id="NavIcon">
+                        <ion-icon name="exit-outline"></ion-icon>
+                    </div>
+                    <a href="/Logout" class="nav-link">Log Out
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+        
+</div>
+

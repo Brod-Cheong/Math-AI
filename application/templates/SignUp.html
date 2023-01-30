@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-md-6">
+    <div class="card text-center">
+        <div class="card-header">Sign Up</div>
+            <div class="card-body">
+                <form action="/Sign_Up" method="POST" novalidate>
+                    <fieldset class="form-group">
+                    {{ signup_form.hidden_tag() }}
+
+
+                    <div class="form-group row">
+                        <label for="email_address" class="col-md-4 col-form-label text-md-left">{{ signup_form.UserName.label }}</label>
+                        {{ signup_form.UserName(class_='form-control') }}
+                        {% for error in signup_form.UserName.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group row" >
+                        <label for="email_address" class="col-md-4 col-form-label text-md-left">{{ signup_form.Password.label }}</label>
+                        {{ signup_form.Password(class_='form-control') }}
+                        {% for error in signup_form.Password.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group row" >
+                        <label for="email_address" class="col-md-4 col-form-label text-md-left">{{ signup_form.confirmPassword.label }}</label>
+                        {{ signup_form.confirmPassword(class_='form-control') }}
+                        {% for error in signup_form.confirmPassword.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+
+                    <row class='justify-content-center'>
+                        <div class="col-md-12 ">    
+                        {{ signup_form.submit(class_='btn btn-primary') }}
+                        </div>
+                    </row>
+                </fieldset>
+                </form>
+            </div>
+    </div>
+</div>
+{% endblock %}

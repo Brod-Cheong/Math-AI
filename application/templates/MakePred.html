@@ -1,0 +1,94 @@
+
+    <!-- Inherits from layout.html -->
+{% extends "layout.html" %}
+<!-- The block content replace the one encapsulated in  layout.html -->
+{% block content %}
+    <div style="display:flex;justify-content: center;">
+    <div style="margin-left: 10%;">
+        <div class='container' id='Camera'>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="video-wrap">
+                        <video id='video' playsinline autoplay></video>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <canvas id='canvas' width=400 height=400></canvas>
+                </div>
+                <div class="col-md-12">
+                    <div class="centered">
+                        <div class='controller'>
+                            <button id='snap'>Capture</button>
+                            
+                            <form class="form" id="ImgForm">
+                                <button type='button' id='predict'>Submit</button>
+                                <hidden div>
+                                    <img src="" id="CapturedImg">                             
+                                </hidden>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+            
+        </div>
+
+        <div class='container' id='Results'>
+                <h3>Prediction:</h3>
+                <div class="container" id='Output'style="text-align:center;">
+                    <h1 id="result_text"></h1>
+                </div>
+                <div class='controller'>
+                    <button id='AddButton'>Add</button>
+                </div>
+                <div class="container" id='Output'style="width:fit-content">
+                    <h1 id="Probability"></h1>
+                </div>
+        </div>
+        <hidden div style="display: none;">
+            <p id="AddedCount">0</p>                             
+        </hidden>
+        <div class='container' id='Results'>
+                <h3>Equation:</h3>
+            <div class="container" id='Output'>
+                <h1 id="EquationText"></h1>
+            </div>
+            <div class='controller'>
+                <button id='SolveBtn'>Solve</button>
+            </div>    
+        </div>  
+
+        <div class='container' id='AnswerContainer'>
+            <h1 id='Answer'></h1>
+        </div>  
+        <div style="position: relative;margin:auto;text-align: center;">
+        <button id='RefreshBtn'onClick="window.location.reload();" style="height:60px;width:150px;"> Restart </button>
+        </div>
+
+    </div>
+
+    <div style="margin-left: 4%;">
+        <div class='container' id='Instructions'>
+
+            <h1 id="InstructionH1" >Instructions</h1>
+            <ol type="1">
+                <li>Allow access to your Web Camera</li>
+                <li>Capture a picture of a number or operator</li>
+                <li>Predict the number or operator from your image</li>
+                <li>Check if the prediction is what you want</li>
+                <li>Click Add to add to your equation</li>
+                <li>Once your equation is complete</li>
+                <li>Click solve</li>
+                <li>Click Restart to use again</li>
+            </ol>
+     
+        </div> 
+        
+    </div>
+</div>
+
+    <script src="{{ url_for('static',filename='js/index.js')}}">'use strict'</script>
+
+    
+{% endblock %}

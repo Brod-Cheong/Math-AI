@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container" id="BackgroundInfo" style="height: 800px;width: 900px; vertical-align: middle;" >
+    <div class='row' style="text-align: center;display: flex;position: relative;">
+        <div class="col-md-12">
+            <h1 style="margin: auto;">Introduction</h1>
+            <p>
+                <b>We are Cheong Jun Brod and Wong Zhuo Yi Joshua from DAAA/2B05. This website site application is for CA2 DEVOPS AND AI AUTOMATION.
+                The goal of this assignment is to create a Classical ML web application that can do image classification.
+                </b>
+            </p>
+        </div>
+        <div class="col-md-12">
+        <h1>About Math AI</h1>
+        <p>
+            This website is a prototype where it allows users to submit numbers and operators through their camera and after submitting a equation worth of valid pictures, the website algorithm will evaluate the equation for you
+        </p>   
+        <p>
+            The dataset used is called <b>Handwritten math symbols dataset</b> which we got from <a href=https://www.kaggle.com/xainano/handwrittenmathsymbols>Kaggle</a>. 
+        </p>
+        </div>
+
+
+        <div class="col-md-12">
+            <h1>About Image Classification Model</h1>
+            <p>
+                The image classification model uses <b>Convolutional Neural Network</b>.
+             </p>
+             <p>
+                 Before any preprocessing of images, model achieved an accuracy of 26% accuracy because when images are grey-scaled and scaled to numbers between 0-1.
+                There weere also alot of unnecessary noise caused by lighting resulting in the numbers and operators not being seen clearly on an image.
+                Through the use of image convert background where we preprocess every single image, we ensured that model is fed with good quality images so that model can be trained well.
+                Combining with MNIST dataset due to imbalanced classes in original data, we managed to achieve 99.99% accuracy despite the noise in MNIST due to resize.
+            </p>
+             <p>
+                 The final trained model that will be used for the prediction, achieved a test accuracy of <b>99.89%</b>
+            </p>
+                
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+.TableScroll{
+    height:490px;
+    width: 100%;
+    overflow:auto;
+    border-radius:30px;
+    border:2px solid white ;
+
+  }
+
+#HistoryTable {
+    text-align: center;
+    margin-top: 20px;
+    position:relative;
+    width: 100%;
+    height:510px;
+
+    background: #1c1f22;
+    box-shadow:25px 25px 75px rgba(0,0,0,0.25), 
+    10px 10px 70px rgba(0,0,0,0.25), 
+    inset 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 10px rgba(255,255,255,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75);
+    border-radius: 30px;
+    padding:10px;
+}
+
+th,td{
+    color:white
+}
+
+#ViewBtn{
+    background:rgba(255, 255, 255, 0.624);
+    color:black;
+    width:150px;
+    height:45px;
+    border-radius: 30px;
+    border-width: 4.5px;
+    border-color: black;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin:auto;
+}
+
+#RemoveBtn{
+    background:rgb(143, 0, 0);
+    color:black;
+    width:150px;
+    height:45px;
+    border-radius: 30px;
+    border-width: 4.5px;
+    border-color: black;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin:auto;
+    
+}
